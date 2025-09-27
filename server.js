@@ -1,10 +1,5 @@
 "use strict";
 
-// Cargar variables de entorno solo localmente
-if (process.env.NODE_ENV !== "production") {
-  require('dotenv').config();
-}
-
 // Imports
 const express = require("express");
 const session = require("express-session");
