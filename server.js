@@ -36,7 +36,7 @@ let oidc = new ExpressOIDC({
   client_id: OKTA_CLIENT_ID,
   client_secret: OKTA_CLIENT_SECRET,
   redirect_uri: REDIRECT_URI,
-  routes: { callback: { defaultRedirect: "http://info-sec-lab6.vercel.app/callback" } },
+  routes: { callback: { defaultRedirect: "http://info-sec-lab6.vercel.app/dashboard" } },
   scope: 'openid profile'
 });
 
