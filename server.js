@@ -26,7 +26,7 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: SECRET,
-  baseURL: 'http://localhost:3000',
+  baseURL: process.env.BASEURL || `http://localhost:${PORT}`,
   clientID: OKTA_CLIENT_ID,
   issuerBaseURL: OKTA_ISSUER_URI
 };
