@@ -1,8 +1,5 @@
 "use strict";
 
-// Cargar variables de entorno
-require('dotenv').config();
-
 // Imports
 const express = require("express");
 const session = require("express-session");
@@ -13,7 +10,7 @@ var cons = require('consolidate');
 var path = require('path');
 let app = express();
 
-// Globals usando variables de entorno
+// Globals
 const OKTA_ISSUER_URI = process.env.OKTA_ISSUER_URI;
 const OKTA_CLIENT_ID = process.env.OKTA_CLIENT_ID;
 const OKTA_CLIENT_SECRET = process.env.OKTA_CLIENT_SECRET;
@@ -26,9 +23,9 @@ const config = {
   authRequired: false,
   auth0Logout: true,
   secret: SECRET,
-  baseURL: process.env.BASEURL || `http://localhost:3000`,
-  clientID: OKTA_CLIENT_ID,
-  issuerBaseURL: OKTA_ISSUER_URI
+  baseURL: process.env.BASEURL,
+  clientID: process.env.CLIENT_ID,
+  issuerBaseURL: process.env.ISSUER_BASEURL
 };
 
 let oidc = new ExpressOIDC({
@@ -36,7 +33,7 @@ let oidc = new ExpressOIDC({
   client_id: OKTA_CLIENT_ID,
   client_secret: OKTA_CLIENT_SECRET,
   redirect_uri: REDIRECT_URI,
-  routes: { callback: { defaultRedirect: "http://info-sec-lab6.vercel.app/dashboard" } },
+  routes: { callback: { defaultRedirect: "https://info-sec-lab6.vercel.app/dashboard" } },
   scope: 'openid profile'
 });
 
